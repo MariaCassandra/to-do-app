@@ -1,6 +1,6 @@
 <template>
   <div class="root-element">
-    <h1>This is the Sign Up / Sign In view</h1>
+    <h1>This is the Sign Up / Sign In page</h1>
     <button @click="handleSignUp">Sign Up</button>
     <button @click="handleSignIn">Sign In</button>
   </div>
@@ -9,9 +9,14 @@
 <script>
 import { mapState, mapActions } from 'pinia';
 import userStore from '@/store/user';
+import SignUp from '../components/SignUp.vue';
 
 export default {
   name: 'AuthView',
+  components: {
+    // eslint-disable-next-line vue/no-unused-components
+    SignUp,
+  },
   computed: {
     ...mapState(userStore, ['user']),
   },

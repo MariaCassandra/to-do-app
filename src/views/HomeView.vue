@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>This is the home view - only visible for existing users</h1>
+    <h1>This is the home page - only visible for existing users</h1>
     <button>Create a new task</button>
   </div>
 </template>
