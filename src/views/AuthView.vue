@@ -9,7 +9,7 @@
 <script>
 import { mapState, mapActions } from 'pinia';
 import userStore from '@/store/user';
-import SignUp from '../components/SignUp.vue';
+import SignUp from '@/components/SignUp.vue';
 
 export default {
   name: 'AuthView',
@@ -21,13 +21,20 @@ export default {
     ...mapState(userStore, ['user']),
   },
   methods: {
-    ...mapActions(userStore, ['signUp']),
+    ...mapActions(userStore, ['signUp', 'signIn']),
     handleSignUp() {
       const userData = {
         email: 'maria.cassandra@gmail.com',
         password: 'pruebasignup',
       };
       this.signUp(userData.email, userData.password);
+    },
+    handleSignIn() {
+      const userData = {
+        email: 'maria.cassandra@gmail.com',
+        password: 'pruebasignup',
+      };
+      this.signIn(userData.email, userData.password);
     },
   },
   watch: {
