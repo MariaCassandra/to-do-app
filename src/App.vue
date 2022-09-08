@@ -1,9 +1,6 @@
 <template>
-<div class="root-element">
-  <nav v-if="user !== null">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/auth">Sign out</router-link> |
-  </nav>
+<div>
+  <NavBar />
   <router-view/>
 </div>
 </template>
@@ -11,14 +8,21 @@
 <script>
 import { mapState, mapActions } from 'pinia';
 import userStore from '@/store/user';
+import NavBar from '@/components/NavBar.vue';
 
 export default {
   name: 'App',
+  components: {
+    NavBar,
+  },
   computed: {
     ...mapState(userStore, ['user']),
   },
   methods: {
-    ...mapActions(userStore, ['fetchUser']),
+    ...mapActions(userStore, ['fetchUser', 'signOut']),
+    handleSignOut() {
+      this.signOut();
+    },
   },
   async created() {
     try {

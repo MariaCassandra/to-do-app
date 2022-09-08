@@ -42,6 +42,8 @@ export default {
       if (this.user) {
         console.log(this.user);
         this.$router.push({ path: '/' });
+      } else {
+        this.$router.push({ path: '/auth' });
       }
     },
   },
