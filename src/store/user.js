@@ -7,9 +7,18 @@ export default defineStore('userStore', {
   }),
 
   actions: {
+    setUser(user) {
+      if (user) {
+        this.user = user;
+        this.router.push('/');
+      } else {
+        this.user = null;
+        this.router.push('/auth');
+      }
+    },
     async fetchUser() {
       const user = await supabase.auth.user();
-      this.user = user;
+      this.setUser(user);
     },
 
     async signUp(email, password) {
@@ -18,7 +27,7 @@ export default defineStore('userStore', {
         password,
       });
       if (error) throw error;
-      if (user) this.user = user;
+      if (user) this.setUser(user);
     },
 
     async signIn(email, password) {
@@ -27,13 +36,13 @@ export default defineStore('userStore', {
         password,
       });
       if (error) throw error;
-      if (user) this.user = user;
+      if (user) this.setUser(user);
     },
 
     async signOut() {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
-      else this.user = null;
+      this.setUser(null);
     },
   },
   persist: {

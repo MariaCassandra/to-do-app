@@ -1,8 +1,8 @@
 <template>
-  <div  class="root-element">
+  <div>
     <nav v-if="user !== null">
     <router-link to="/">Home</router-link> |
-    <router-link to="/auth" @click="handleSignOut">Sign out</router-link> |
+    <button @click="signOut">Sign Out</button> |
   </nav>
   </div>
 </template>
@@ -18,9 +18,6 @@ export default {
   },
   methods: {
     ...mapActions(userStore, ['fetchUser', 'signOut']),
-    handleSignOut() {
-      this.signOut();
-    },
   },
   async created() {
     try {

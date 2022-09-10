@@ -15,7 +15,7 @@ export default {
     ...mapState(taskStore, ['tasks']),
   },
   methods: {
-    ...mapActions(taskStore, ['fetchTasks', 'newTask']),
+    ...mapActions(taskStore, ['fetchTasks']),
   },
   created() {
     this.fetchTasks();
