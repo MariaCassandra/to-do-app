@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       image: {
-        backgroundImage: 'url(https://raw.githubusercontent.com/MariaCassandra/angular-basic/main/src/assets/img/deskpink.jpeg)',
+        backgroundImage: 'url(https://raw.githubusercontent.com/MariaCassandra/to-do-app/extraRama/src/assets/deskpink.jpeg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -29,6 +29,11 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
 
 #app {
   font-family: 'Poppins', Helvetica, Arial, sans-serif;

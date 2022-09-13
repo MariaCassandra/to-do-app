@@ -2,6 +2,7 @@
   <div class="authView">
     <h1>Hi there! Choose the sign up or login option</h1>
     <SignUp />
+    <br>
     <SignIn />
   </div>
 </template>

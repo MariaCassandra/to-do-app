@@ -10,7 +10,7 @@
                 <input v-model="newUserPassword" type="password" placeholder="password" required>
             </label>
             <label for="password">Confirm your password:
-                <input v-model="newUserPassword" type="password" placeholder="password" required>
+                <input v-model="newUserPassword" type="password" placeholder="repeat the password" required>
             </label>
             <div v-if="passwordError">{{ passwordError }}</div>
             <button type="submit"  @click.prevent="handleSignUp">Create an account! </button>
@@ -42,6 +42,10 @@ export default {
 </script>
 
 <style>
+h2 {
+    text-align: center;
+    padding: 1rem;
+}
 form {
   display: flex;
   flex-direction: column;
@@ -52,6 +56,15 @@ form {
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: hsla(0, 100%, 90%, 0.4);
+}
+
+input {
+  width: 20rem;
+  height: 1rem;
+  border: 1px solid #dddd;
+  border-radius: 18px;
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
 button {
