@@ -1,5 +1,5 @@
 <template>
-<div>
+<div :style="image">
   <NavBar />
   <router-view/>
 </div>
@@ -12,6 +12,17 @@ export default {
   name: 'App',
   components: {
     NavBar,
+  },
+  data() {
+    return {
+      image: {
+        backgroundImage: 'url(https://raw.githubusercontent.com/MariaCassandra/angular-basic/main/src/assets/img/deskpink.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        height: '100vh',
+      },
+    };
   },
 };
 </script>

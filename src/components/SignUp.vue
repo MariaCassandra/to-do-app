@@ -51,6 +51,7 @@ form {
   border: 1px solid #dddd;
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: hsla(0, 100%, 90%, 0.4);
 }
 
 button {

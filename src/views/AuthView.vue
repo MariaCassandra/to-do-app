@@ -1,10 +1,8 @@
 <template>
   <div class="authView">
-    <h1>This is the Sign Up / Sign In page</h1>
+    <h1>Hi there! Choose the sign up or login option</h1>
     <SignUp />
     <SignIn />
-    <!-- <button @click="handleSignUp">Sign Up</button>
-    <button @click="handleSignIn">Sign In</button> -->
   </div>
 </template>
 
