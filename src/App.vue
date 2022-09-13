@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'pinia';
-import userStore from '@/store/user';
 import NavBar from '@/components/NavBar.vue';
 
 export default {
@@ -15,34 +13,14 @@ export default {
   components: {
     NavBar,
   },
-  computed: {
-    ...mapState(userStore, ['user']),
-  },
-  methods: {
-    ...mapActions(userStore, ['fetchUser', 'signOut']),
-    handleSignOut() {
-      this.signOut();
-    },
-  },
-  async created() {
-    try {
-      await this.fetchUser();
-      console.log(this.user);
-      if (!this.user) {
-        this.$router.push({ path: '/auth' });
-      } else {
-        this.$router.push({ path: '/' });
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  },
 };
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

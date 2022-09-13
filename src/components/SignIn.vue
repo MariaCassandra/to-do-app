@@ -8,18 +8,20 @@
             <label for="password">Password:
                 <input type="password" placeholder="password" required>
             </label>
+            <button @click="handleSignIn"> Sign In! </button>
         </form>
-        <button @click="handleSignIn"> Sign In! </button>
-        <p>You don't have an account? Click here to create one!</p>
     </div>
 </template>
 
 <script>
-import { mapActions } from 'pinia';
+import { mapState, mapActions } from 'pinia';
 import userStore from '@/store/user';
 
 export default {
   name: 'SignIn',
+  computed: {
+    ...mapState(userStore, ['user']),
+  },
   methods: {
     ...mapActions(userStore, ['signIn']),
     handleSignIn() {

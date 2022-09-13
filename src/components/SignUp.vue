@@ -1,3 +1,4 @@
+<!-- eslint-disable max-len -->
 <template>
     <div>
         <h2>Sign Up here to create your own Task App Account</h2>
@@ -14,7 +15,6 @@
             <div v-if="passwordError">{{ passwordError }}</div>
             <button type="submit"  @click.prevent="handleSignUp">Create an account! </button>
         </form>
-        <p>Do you have an account? Click here to Sign In!</p>
     </div>
 </template>
 
@@ -40,3 +40,43 @@ export default {
   },
 };
 </script>
+
+<style>
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  border: 1px solid #dddd;
+  border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+button {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+}
+
+button:hover {
+  background-color: #F082AC;
+  cursor: pointer;
+}
+</style>

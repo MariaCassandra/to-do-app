@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="authView">
     <h1>This is the Sign Up / Sign In page</h1>
-    <button @click="handleSignUp">Sign Up</button>
-    <button @click="handleSignIn">Sign In</button>
+    <SignUp />
+    <SignIn />
+    <!-- <button @click="handleSignUp">Sign Up</button>
+    <button @click="handleSignIn">Sign In</button> -->
   </div>
 </template>
 
@@ -15,9 +17,7 @@ import SignIn from '@/components/SignIn.vue';
 export default {
   name: 'AuthView',
   components: {
-    // eslint-disable-next-line vue/no-unused-components
     SignUp,
-    // eslint-disable-next-line vue/no-unused-components
     SignIn,
   },
   computed: {
@@ -57,3 +57,11 @@ export default {
   },
 };
 </script>
+
+<style>
+.authView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
