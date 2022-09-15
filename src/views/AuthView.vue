@@ -1,9 +1,16 @@
 <template>
   <div class="authView">
-    <h1>Hi there! Choose the sign up or login option</h1>
-    <SignUp />
+    <div v-if="showsignin">
+     <SignIn />
+     <br>
+     <button @click="showSignUp"> I don't have an account!</button>
+    </div>
     <br>
-    <SignIn />
+    <div v-if="showsignup">
+      <SignUp />
+      <br>
+      <button @click="showSignIn"> I already have an account!</button>
+    </div>
   </div>
 </template>
 
@@ -18,6 +25,12 @@ export default {
   components: {
     SignUp,
     SignIn,
+  },
+  data() {
+    return {
+      showsignin: true,
+      showsignup: false,
+    };
   },
   computed: {
     ...mapState(userStore, ['user']),
@@ -42,6 +55,14 @@ export default {
         console.log(this.passwordValue);
       }
       this.signIn(userData.email, userData.password);
+    },
+    showSignIn() {
+      this.showsignin = !this.showsignin;
+      this.showsignup = !this.showsignup;
+    },
+    showSignUp() {
+      this.showsignup = !this.showsignup;
+      this.showsignin = !this.showsignin;
     },
   },
   watch: {

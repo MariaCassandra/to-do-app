@@ -13,7 +13,7 @@
                 <input v-model="newUserPassword" type="password" placeholder="repeat the password" required>
             </label>
             <div v-if="passwordError">{{ passwordError }}</div>
-            <button type="submit"  @click.prevent="handleSignUp">Create an account! </button>
+            <button @click.prevent="handleSignUp">Create an account! </button>
         </form>
     </div>
 </template>
@@ -28,6 +28,7 @@ export default {
     return {
       newUserEmail: '',
       newUserPassword: '',
+      passwordError: '',
     };
   },
   methods: {
