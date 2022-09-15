@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Welcome back to Task App, please fill in your account details</h2>
+        <h2>Welcome back, sign in to your Task App Account</h2>
         <form class="form" method="post">
             <label for="email">Email:
                 <input type="email" placeholder="example@mail.com" required>

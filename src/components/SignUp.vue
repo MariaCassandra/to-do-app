@@ -10,16 +10,16 @@
                 <input v-model="newUserPassword" type="password" placeholder="password" required>
             </label>
             <label for="password">Confirm your password:
-                <input v-model="newUserPassword" type="password" placeholder="repeat the password" required>
+                <input v-model="confirmPassword" type="password" placeholder="repeat the password" required>
             </label>
-            <div v-if="passwordError">{{ passwordError }}</div>
+            <div v-if="passwordError">{{ this.passwordError }}</div>
             <button @click.prevent="handleSignUp">Create an account! </button>
         </form>
     </div>
 </template>
 
 <script>
-import { mapActions } from 'pinia';
+import { mapState, mapActions } from 'pinia';
 import userStore from '@/store/user';
 
 export default {
@@ -28,15 +28,20 @@ export default {
     return {
       newUserEmail: '',
       newUserPassword: '',
+      confirmPassword: '',
       passwordError: '',
     };
+  },
+  computed: {
+    ...mapState(userStore, ['user']),
   },
   methods: {
     ...mapActions(userStore, ['signUp']),
     handleSignUp() {
-      if (this.newUserEmail && this.newUserPassword) {
-        this.signUp(this.newUserEmail, this.newUserPassword);
+      if (this.confirmPassword === !this.newUserPassword) {
+        this.passwordError = "The passwords don't match";
       }
+      this.signUp(this.newUserEmail, this.newUserPassword);
     },
   },
 };

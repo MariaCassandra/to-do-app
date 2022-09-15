@@ -1,16 +1,19 @@
 <template>
   <div class="home">
-    <h1>This is the home page - only visible for existing users</h1>
-    <button @click="newTask">Create a new task</button>
+  <NewTask />
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'pinia';
 import taskStore from '@/store/task';
+import NewTask from '@/components/NewTask.vue';
 
 export default {
   name: 'HomeView',
+  components: {
+    NewTask,
+  },
   computed: {
     ...mapState(taskStore, ['tasks']),
   },

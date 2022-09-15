@@ -5,7 +5,6 @@
      <br>
      <button @click="showSignUp"> I don't have an account!</button>
     </div>
-    <br>
     <div v-if="showsignup">
       <SignUp />
       <br>
@@ -83,5 +82,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-items: center;
+  padding: 3rem;
 }
 </style>
