@@ -8,7 +8,7 @@
             <label for="password">Password:
                 <input type="password" placeholder="password" required>
             </label>
-            <button @click="handleSignIn"> Sign In! </button>
+            <button @click.prevent="handleSignIn"> Sign In! </button>
         </form>
     </div>
 </template>
@@ -19,17 +19,19 @@ import userStore from '@/store/user';
 
 export default {
   name: 'SignIn',
+  data() {
+    return {
+      email: '',
+      password: '',
+    };
+  },
   computed: {
     ...mapState(userStore, ['user']),
   },
   methods: {
     ...mapActions(userStore, ['signIn']),
     handleSignIn() {
-      const userData = {
-        email: 'maria.cassandra@gmail.com',
-        password: 'pruebasignup',
-      };
-      this.signIn(userData.email, userData.password);
+      this.signIn(this.email, this.password);
     },
   },
 };
