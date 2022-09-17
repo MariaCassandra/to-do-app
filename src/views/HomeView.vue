@@ -34,4 +34,16 @@ h1 {
   padding: 1rem;
 }
 
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #ffffff;
+}
 </style>
