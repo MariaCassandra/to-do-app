@@ -42,6 +42,6 @@ h2 {
 }
 input {
   margin-bottom: 1.25rem;
-  width: 100%;
+  width: 70%;
 }
 </style>

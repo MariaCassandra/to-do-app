@@ -35,7 +35,7 @@ h1 {
 }
 
 nav {
-  padding: 30px;
+  padding: 0.75rem;
 }
 
 nav a {
