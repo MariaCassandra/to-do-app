@@ -2,7 +2,7 @@
   <div class="NavBarStyle">
     <nav v-if="user !== null">
     <router-link to="/">Home</router-link> |
-    <button @click="signOut">Sign Out</button> |
+    <router-link to="/auth" @click="handleSignOut">Sign Out</router-link> |
   </nav>
   </div>
 </template>
@@ -30,8 +30,22 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
 .NavBarStyle {
   background-color: #EA4C89;
+}
+
+nav {
+  padding: 0.75rem;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #ffffff;
 }
 </style>

@@ -1,12 +1,18 @@
 <template>
 <div :style="image">
+  <NavBar />
   <router-view/>
 </div>
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue';
+
 export default {
   name: 'App',
+  components: {
+    NavBar,
+  },
   data() {
     return {
       image: {
@@ -35,5 +41,22 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.NavBarStyle {
+  background-color: #EA4C89;
+}
+
+nav {
+  padding: 0.75rem;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #ffffff;
 }
 </style>
