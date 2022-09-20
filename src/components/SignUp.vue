@@ -2,7 +2,7 @@
 <template>
     <div>
         <h2>Sign Up here to create your own Task App Account</h2>
-        <form class="form" method="post" @submit.prevent="handleSignUp">
+        <form class="form" method="post">
             <label for="email">Email:
                 <input v-model="newUserEmail" type="email" placeholder="example@mail.com" required>
             </label>
@@ -13,7 +13,7 @@
                 <input v-model="confirmPassword" type="password" placeholder="repeat the password" required>
             </label>
             <div v-if="passwordError">{{ this.passwordError }}</div>
-            <button @click.prevent="handleSignUp">Create an account! </button>
+            <button type="button" @click.prevent="handleSignUp">Create an account! </button>
         </form>
     </div>
 </template>
@@ -37,11 +37,17 @@ export default {
   },
   methods: {
     ...mapActions(userStore, ['signUp']),
-    handleSignUp() {
+    async handleSignUp() {
       if (this.confirmPassword === !this.newUserPassword) {
         this.passwordError = "The passwords don't match";
       }
-      this.signUp(this.newUserEmail, this.newUserPassword);
+      try {
+        await this.signUp(this.newUserEmail, this.newUserPassword);
+        console.log('patata');
+      } catch (error) {
+        console.log(error);
+        console.log('error');
+      }
     },
   },
 };

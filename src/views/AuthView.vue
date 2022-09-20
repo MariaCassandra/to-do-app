@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'pinia';
+import { mapState } from 'pinia';
 import userStore from '@/store/user';
 import SignUp from '@/components/SignUp.vue';
 import SignIn from '@/components/SignIn.vue';
@@ -35,26 +35,6 @@ export default {
     ...mapState(userStore, ['user']),
   },
   methods: {
-    ...mapActions(userStore, ['signUp', 'signIn']),
-    handleSignUp() {
-      const userData = {
-        email: this.emailValue,
-        password: this.passwordValue,
-      };
-      this.signUp(userData.email, userData.password);
-    },
-    handleSignIn() {
-      const userData = {
-        email: 'maria.cassandra@gmail.com',
-        password: 'pruebasignup',
-      };
-      this.passwordError = this.password.length > 6 ? '' : 'Password should have more than 6 characters';
-      if (!this.passwordError) {
-        console.log(this.emailValue);
-        console.log(this.passwordValue);
-      }
-      this.signIn(userData.email, userData.password);
-    },
     showSignIn() {
       this.showsignin = !this.showsignin;
       this.showsignup = !this.showsignup;

@@ -3,12 +3,12 @@
         <h2>Welcome back, sign in to your Task App Account</h2>
         <form class="form" method="post">
             <label for="email">Email:
-                <input type="email" placeholder="example@mail.com" required>
+                <input v-model="email" type="email" placeholder="example@mail.com" required>
             </label>
             <label for="password">Password:
-                <input type="password" placeholder="password" required>
+                <input v-model="password" type="password" placeholder="password" required>
             </label>
-            <button @click.prevent="handleSignIn"> Sign In! </button>
+            <button type="button" @click.prevent="handleSignIn"> Sign In! </button>
         </form>
     </div>
 </template>
