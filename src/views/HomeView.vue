@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-  <NavBar />
-  <NewTask />
+    <NavBar />
+    <NewTask />
   </div>
 </template>
 
