@@ -13,7 +13,7 @@
          <input type="text" v-model="newTaskDescription"
           placeholder="Add a task description"/>
         </label>
-        <button type="button" @click.prevent="newTaskButton">Create a new task</button>
+        <button type="button" @click.prevent="handleNewTask">Create a new task</button>
       </form>
     </div>
     <div class="AllTasksContainer">
@@ -65,7 +65,7 @@ export default {
       this.fetchTasks();
       console.log(this.tasks);
     },
-    newTaskButton() {
+    handleNewTask() {
       this.addTask(this.newTaskTitle, this.newTaskDescription);
       this.newTask = '';
     },

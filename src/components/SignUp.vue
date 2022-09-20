@@ -45,7 +45,8 @@ export default {
         await this.signUp(this.newUserEmail, this.newUserPassword);
       } catch (error) {
         console.log(error);
-        console.log('This user already exists!');
+        // eslint-disable-next-line no-alert
+        alert('Error creating an account: ', error.message);
       }
     },
   },
