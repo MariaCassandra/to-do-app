@@ -1,10 +1,8 @@
 <template>
-  <div class="NavBarStyle">
-    <nav v-if="user !== null">
+    <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/auth" @click="handleSignOut">Sign Out</router-link> |
   </nav>
-  </div>
 </template>
 
 <script>
@@ -30,14 +28,13 @@ export default {
 };
 </script>
 
-<style scoped>
-
-.NavBarStyle {
-  background-color: #EA4C89;
-}
+<style>
 
 nav {
+  background-color: #EA4C89;
   padding: 0.75rem;
+  width: 100%;
+  height: 10%;
 }
 
 nav a {
