@@ -1,60 +1,39 @@
 <template>
-<div class="root-element">
-  <nav v-if="user !== null">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/auth">Sign out</router-link> |
-  </nav>
+<div :style="image">
   <router-view/>
 </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'pinia';
-import userStore from '@/store/user';
-
 export default {
   name: 'App',
-  computed: {
-    ...mapState(userStore, ['user']),
-  },
-  methods: {
-    ...mapActions(userStore, ['fetchUser']),
-  },
-  async created() {
-    try {
-      await this.fetchUser();
-      console.log(this.user);
-      if (!this.user) {
-        this.$router.push({ path: '/auth' });
-      } else {
-        this.$router.push({ path: '/' });
-      }
-    } catch (e) {
-      console.error(e);
-    }
+  data() {
+    return {
+      image: {
+        backgroundImage: 'url(https://raw.githubusercontent.com/MariaCassandra/to-do-app/extraRama/src/assets/deskpink.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        height: '100vh',
+      },
+    };
   },
 };
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

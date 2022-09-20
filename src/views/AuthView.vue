@@ -1,33 +1,47 @@
 <template>
-  <div class="root-element">
-    <h1>This is the Sign Up / Sign In page</h1>
-    <button @click="handleSignUp">Sign Up</button>
-    <button @click="handleSignIn">Sign In</button>
+  <div class="authView">
+    <div v-if="showsignin">
+     <SignIn />
+     <br>
+     <button @click="showSignUp"> I don't have an account!</button>
+    </div>
+    <div v-if="showsignup">
+      <SignUp />
+      <br>
+      <button @click="showSignIn"> I already have an account!</button>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'pinia';
+import { mapState } from 'pinia';
 import userStore from '@/store/user';
-import SignUp from '../components/SignUp.vue';
+import SignUp from '@/components/SignUp.vue';
+import SignIn from '@/components/SignIn.vue';
 
 export default {
   name: 'AuthView',
   components: {
-    // eslint-disable-next-line vue/no-unused-components
     SignUp,
+    SignIn,
+  },
+  data() {
+    return {
+      showsignin: true,
+      showsignup: false,
+    };
   },
   computed: {
     ...mapState(userStore, ['user']),
   },
   methods: {
-    ...mapActions(userStore, ['signUp']),
-    handleSignUp() {
-      const userData = {
-        email: 'maria.cassandra@gmail.com',
-        password: 'pruebasignup',
-      };
-      this.signUp(userData.email, userData.password);
+    showSignIn() {
+      this.showsignin = !this.showsignin;
+      this.showsignup = !this.showsignup;
+    },
+    showSignUp() {
+      this.showsignup = !this.showsignup;
+      this.showsignin = !this.showsignin;
     },
   },
   watch: {
@@ -35,8 +49,20 @@ export default {
       if (this.user) {
         console.log(this.user);
         this.$router.push({ path: '/' });
+      } else {
+        this.$router.push({ path: '/auth' });
       }
     },
   },
 };
 </script>
+
+<style>
+.authView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  padding: 3rem;
+}
+</style>
