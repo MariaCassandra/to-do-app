@@ -43,10 +43,9 @@ export default {
       }
       try {
         await this.signUp(this.newUserEmail, this.newUserPassword);
-        console.log('patata');
       } catch (error) {
         console.log(error);
-        console.log('error');
+        console.log('This user already exists!');
       }
     },
   },

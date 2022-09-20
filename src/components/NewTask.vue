@@ -6,28 +6,28 @@
       </h2>
       <form class="input">
         <label for="newTaskTitle">
-         <input type="text"
-          placeholder="Add a task title"
-          v-model="newTaskTitle"/>
+         <input type="text" v-model="newTaskTitle"
+          placeholder="Add a task title"/>
         </label>
         <label for="newTaskDescription">
-         <input type="text"
-          placeholder="Add a task description"
-          v-model="newTaskDescription"/>
+         <input type="text" v-model="newTaskDescription"
+          placeholder="Add a task description"/>
         </label>
-        <button @click="newTaskButton">Create a new task</button>
+        <button type="button" @click.prevent="newTaskButton">Create a new task</button>
       </form>
     </div>
     <div class="AllTasksContainer">
       <table class="taskTable">
         <tr>
           <th>Task title</th>
+          <th>Date</th>
           <th>Status</th>
           <th>Modify</th>
           <th>Delete</th>
         </tr>
         <tr v-for = "task in tasks" :key="task.id">
           <td>{{task.title}}</td>
+          <td>{{task.inserted_at}}</td>
           <td><label for='taskStatus'> {{task.is_complete}}
           <input v-model ="task.is_complete" name="taskStatus" type="checkbox"></label></td>
           <td><button @click="handleEditTask(title)">
@@ -48,7 +48,8 @@ export default {
   name: 'NewTask',
   data() {
     return {
-      newTask: '',
+      newTaskTitle: '',
+      newTaskDescription: '',
     };
   },
   computed: {
@@ -59,9 +60,10 @@ export default {
     this.fetchTasks();
   },
   methods: {
-    ...mapActions(taskStore, ['fetchTasks', 'signOut', 'addTask', 'editTask', 'deleteTask']),
-    handleSignOut() {
-      this.signOut();
+    ...mapActions(taskStore, ['fetchTasks', 'addTask', 'editTask']),
+    getTasks() {
+      this.fetchTasks();
+      console.log(this.tasks);
     },
     newTaskButton() {
       this.addTask(this.newTaskTitle, this.newTaskDescription);
