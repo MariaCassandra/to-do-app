@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       image: {
-        backgroundImage: 'url(https://raw.githubusercontent.com/MariaCassandra/to-do-app/extraRama/src/assets/deskpink.jpeg)',
+        backgroundImage: 'url(https://raw.githubusercontent.com/MariaCassandra/to-do-app/develop/src/assets/deskpink.jpeg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
