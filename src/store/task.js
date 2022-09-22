@@ -7,11 +7,11 @@ export default defineStore('tasks', {
   }),
   actions: {
     async fetchTasks() {
-      const { data } = await supabase
+      const { data: tasks } = await supabase
         .from('tasks')
         .select('*')
         .order('id', { ascending: false });
-      this.tasks = data;
+      this.tasks = tasks;
     },
     async addTask(task) {
       const { data, error } = await supabase

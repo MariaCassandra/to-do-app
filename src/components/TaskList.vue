@@ -36,14 +36,10 @@ export default {
     this.fetchTasks();
   },
   methods: {
-    ...mapActions(taskStore, ['fetchTasks', 'addTask', 'editTask', 'deleteTask']),
+    ...mapActions(taskStore, ['fetchTasks', 'editTask', 'deleteTask']),
     getTasks() {
       this.fetchTasks();
       console.log(this.tasks);
-    },
-    handleNewTask() {
-      this.addTask(this.newTaskTitle, this.newTaskDescription);
-      this.newTask = '';
     },
     handleEditTask(taskId, title) {
       this.editTask(taskId, title);

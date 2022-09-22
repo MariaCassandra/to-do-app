@@ -3,16 +3,16 @@
       <h1>Add a new task</h1>
       <h2>Get organized and stay calm with Task App
       </h2>
-      <form class="input">
-        <label for="newTaskTitle">
+      <form>
+        <label for="taskTitle">
          <input type="text" v-model="newTaskTitle"
           placeholder="Add a task title"/>
         </label>
-        <label for="newTaskDescription">
+        <label for="taskDescription">
          <input type="text" v-model="newTaskDescription"
           placeholder="Add a task description"/>
         </label>
-        <button type="button" @click.prevent="handleNewTask">Create a new task</button>
+        <button type="button" @click.prevent="handleNewTask()">Create a new task</button>
       </form>
     </div>
 </template>
@@ -34,24 +34,11 @@ export default {
     ...mapState(taskStore, ['tasks']),
     ...mapState(userStore, ['user']),
   },
-  created() {
-    this.fetchTasks();
-  },
   methods: {
-    ...mapActions(taskStore, ['fetchTasks', 'addTask', 'editTask']),
-    getTasks() {
-      this.fetchTasks();
-      console.log(this.tasks);
-    },
+    ...mapActions(taskStore, ['addTask']),
     handleNewTask() {
-      this.addTask(this.newTaskTitle, this.newTaskDescription);
+      this.addTask(this.newTaskTitle, this.user.id);
       this.newTask = '';
-    },
-    handleEditTask(title) {
-      this.editTask(title);
-    },
-    handleDelete(taskId) {
-      this.deleteTask(taskId);
     },
   },
 };
@@ -64,11 +51,9 @@ export default {
   max-width: 40rem;
 }
 h1 {
-  display: block;
-  font-size: 2.25rem;
+  font-size: 2.2rem;
 }
 h2 {
-  display: block;
   font-size: 1.25rem;
 }
 </style>
