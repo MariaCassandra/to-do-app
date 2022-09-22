@@ -38,7 +38,7 @@ export default {
     ...mapActions(taskStore, ['addTask']),
     handleNewTask() {
       this.addTask(this.newTaskTitle, this.user.id);
-      this.newTask = '';
+      this.newTaskTitle = '';
     },
   },
 };
