@@ -1,5 +1,4 @@
 <template>
-  <div class="section">
     <div class="NewTaskContainer">
       <h1>Add a new task</h1>
       <h2>Get organized and stay calm with Task App
@@ -16,27 +15,6 @@
         <button type="button" @click.prevent="handleNewTask">Create a new task</button>
       </form>
     </div>
-    <div class="AllTasksContainer">
-      <table class="taskTable">
-        <tr>
-          <th>Task title</th>
-          <th>Date</th>
-          <th>Status</th>
-          <th>Modify</th>
-          <th>Delete</th>
-        </tr>
-        <tr v-for = "task in tasks" :key="task.id">
-          <td>{{task.title}}</td>
-          <td>{{task.inserted_at}}</td>
-          <td><label for='taskStatus'> {{task.is_complete}}
-          <input v-model ="task.is_complete" name="taskStatus" type="checkbox"></label></td>
-          <td><button @click="handleEditTask(title)">
-            Edit task</button></td>
-          <td><button @click="deleteTask(task.id)">Delete task</button></td>
-        </tr>
-      </table>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -79,7 +57,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .NewTaskContainer {
   text-align: center;
   margin: auto;
@@ -87,28 +65,10 @@ export default {
 }
 h1 {
   display: block;
-  margin-top: 3rem;
-  font-size: 2.5rem;
+  font-size: 2.25rem;
 }
 h2 {
   display: block;
   font-size: 1.25rem;
-  margin-bottom: 1.25rem;
-}
-.taskTable {
-  border: 1px solid #dddd;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: hsla(0, 100%, 90%, 0.4);
-  margin-left: 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 30%;
-}
-
-th {
-  padding-left: 3rem;
-  justify-content: space-between;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <NavBar />
+    <TaskList />
     <NewTask />
   </div>
 </template>
@@ -10,12 +11,14 @@ import { mapState, mapActions } from 'pinia';
 import taskStore from '@/store/task';
 import NavBar from '@/components/NavBar.vue';
 import NewTask from '@/components/NewTask.vue';
+import TaskList from '@/components/TaskList.vue';
 
 export default {
   name: 'HomeView',
   components: {
     NavBar,
     NewTask,
+    TaskList,
   },
   computed: {
     ...mapState(taskStore, ['tasks']),
@@ -28,9 +31,3 @@ export default {
   },
 };
 </script>
-
-<style>
-h1 {
-  padding: 1rem;
-}
-</style>

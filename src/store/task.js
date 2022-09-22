@@ -13,5 +13,14 @@ export default defineStore('tasks', {
         .order('id', { ascending: false });
       this.tasks = data;
     },
+    async addTask(task) {
+      const { data, error } = await supabase
+        .from('tasks')
+        .insert(task);
+      if (error) throw error;
+      else {
+        this.tasks.push(data[0]);
+      }
+    },
   },
 });
