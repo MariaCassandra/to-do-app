@@ -13,14 +13,20 @@ export default defineStore('tasks', {
         .order('id', { ascending: false });
       this.tasks = tasks;
     },
-    async addTask(task) {
+    async addTasks(task) {
       const { data, error } = await supabase
         .from('tasks')
         .insert(task);
       if (error) throw error;
-      else {
-        this.tasks.push(data[0]);
-      }
+      else this.tasks.push(data[0]);
+    },
+    async deleteTask(id, taskindex) {
+      const { error } = await supabase
+        .from('tasks')
+        .delete()
+        .match({ id });
+      if (error) throw error;
+      this.tasks.splice(taskindex, 1);
     },
   },
 });

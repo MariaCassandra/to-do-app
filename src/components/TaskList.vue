@@ -15,7 +15,7 @@
           <input v-model ="task.is_complete" name="taskStatus" type="checkbox"></label></td>
           <td><button @click="handleEditTask(task.id, task.title)">
             Edit task</button></td>
-          <td><button @click="deleteTask(task.id)">Delete task</button></td>
+          <td><button @click="handleDeleteTask(task.id)">Delete task</button></td>
         </tr>
       </table>
     </div>
@@ -44,7 +44,7 @@ export default {
     handleEditTask(taskId, title) {
       this.editTask(taskId, title);
     },
-    handleDelete(taskId) {
+    handleDeleteTask(taskId) {
       this.deleteTask(taskId);
     },
   },
