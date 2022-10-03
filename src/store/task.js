@@ -7,11 +7,26 @@ export default defineStore('tasks', {
   }),
   actions: {
     async fetchTasks() {
-      const { data } = await supabase
+      const { data: tasks } = await supabase
         .from('tasks')
         .select('*')
         .order('id', { ascending: false });
-      this.tasks = data;
+      this.tasks = tasks;
+    },
+    async addTasks(task) {
+      const { data, error } = await supabase
+        .from('tasks')
+        .insert(task);
+      if (error) throw error;
+      else this.tasks.push(data[0]);
+    },
+    async deleteTask(id, taskindex) {
+      const { error } = await supabase
+        .from('tasks')
+        .delete()
+        .match({ id });
+      if (error) throw error;
+      this.tasks.splice(taskindex, 1);
     },
   },
 });
